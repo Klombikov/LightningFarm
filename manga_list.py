@@ -21,7 +21,7 @@ class MangaList():
             self._mangaList = jsonLoader.LoadFile(self._readingListPath)
 
     def updateMangaList(self):
-        self._mangaList = getMangaBranchId(targetURLCount=30)
+        self._mangaList = getMangaBranchId(targetURLCount=1000)
         self._mangaList["current"] = self._mangaList["in_queue"].pop(0)
         self.saveMangaList()
 

@@ -2,13 +2,15 @@ import aiohttp
 
 
 from config import *
+from processRewards import *
+
 
 async def farmDailyLightning():
     async with aiohttp.ClientSession() as session:
         async with session.get(currentUserUrl, headers=headers) as response:
-            print(response.status)
-            print(await response.json())
-            if "rewards" in response.json():
-                print(response.json()["rewards"])
-                return response.json()["rewards"]
-    return None
+            result = await response.json()
+            if "rewards" in result.keys():
+                lightning = 0
+                processRewards(result["rewards"], lightning)
+                return lightning
+    return 0

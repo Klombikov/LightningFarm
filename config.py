@@ -3,13 +3,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-MANGA_BRANCHID_JSON = "./manga_branch_id.json"
-READING_LIST_JSON = "./reading_list.json"
-MAX_COUNT_COMMENTS = 41
-MAX_COUNT_CHAPTERS_BEFORE_LIGHTING = 10
-
-
-
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0",
     "Accept": "*/*",
@@ -26,6 +19,7 @@ headers = {
     "Priority": "u=0",
 }
 
+
 commentTitlePayload = {
     "text": (
         '<p dir="ltr"><span style="white-space: pre-wrap;">'
@@ -34,6 +28,7 @@ commentTitlePayload = {
     ),
     "title": 51969
 }
+
 
 commentChapterPayload = {
     "text": (
@@ -45,9 +40,8 @@ commentChapterPayload = {
     "page": 1
 }
 
+
 commentUrl = "https://api.remanga.org/api/v2/activity/comments/"
 chaptersUrl = "https://api.remanga.org/api/v2/titles/chapters/?chapter=&user_data=1"
 readChapterUrl = "https://api.remanga.org/api/activity/views/"
-# Для получения молний за ежедневное посещение
 currentUserUrl = "https://api.remanga.org/api/v2/users/current/"
-my_id = 31134

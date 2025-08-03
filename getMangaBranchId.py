@@ -101,7 +101,7 @@ def getBranchIdAndTitle(chapters_url):
     return {
             "title": title,
             "branch_id": int(list(branch_ids)[0]),
-            "current_page": 0
+            "current_page": 1
         }
 
 def getMangaBranchId(saveFile=True, targetURLCount=30):

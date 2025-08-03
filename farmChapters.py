@@ -70,7 +70,7 @@ async def findUnreadedChapters(mangaList: MangaList):
             mangaList.chooseNextManga()
 
 
-async def getLightningForReading(mangaList: MangaList, maxReadedChapters=5):
+async def getLightningForReading(mangaList: MangaList, maxReadedChapters=10):
     iteration = 0
     lightning = 0
     flag = False
@@ -90,7 +90,7 @@ async def getLightningForReading(mangaList: MangaList, maxReadedChapters=5):
     return lightning
 
 
-async def farmChapters(mangaList: MangaList, maxCommentsCount=1):
+async def farmChapters(mangaList: MangaList, maxCommentsCount=41):
     sumLightning = 0
     try:
         iteration = 0

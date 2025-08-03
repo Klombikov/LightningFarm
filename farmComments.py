@@ -1,11 +1,14 @@
 import aiohttp
-from config import *
 import asyncio
 
 
-async def farmComments():
-    rewards = []
-    for i in range(MAX_COUNT_COMMENTS):
+from processRewards import *
+from config import *
+
+
+async def farmComments(maxCommentsCount=21):
+    sumLightning = 0
+    for i in range(maxCommentsCount):
         postResponse = None
         async with aiohttp.ClientSession() as session:
             async with session.post(commentUrl, headers=headers, json=commentChapterPayload) as response:
@@ -17,10 +20,10 @@ async def farmComments():
                 ...
 
         if 'rewards' in postResponse.keys() and postResponse['rewards']:
-            rewards.append(postResponse['rewards'])
+            processRewards(postResponse['rewards'], sumLightning)
         
         else:
             print('Молний за комменты больше не дают')
             break
         await asyncio.sleep(60)
-    return rewards
+    return sumLightning
