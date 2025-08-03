@@ -1,0 +1,156 @@
+{
+    "in_queue": [
+        {
+            "title": "Первый шаг",
+            "branch_id": 1717,
+            "current_page": 0
+        },
+        {
+            "title": "Становление богом",
+            "branch_id": 283,
+            "current_page": 0
+        },
+        {
+            "title": "Ван Пис",
+            "branch_id": 234,
+            "current_page": 0
+        },
+        {
+            "title": "Маг на полную ставку",
+            "branch_id": 8710,
+            "current_page": 0
+        },
+        {
+            "title": "Перерождение бессмертного горожанина-культиватора",
+            "branch_id": 2793,
+            "current_page": 0
+        },
+        {
+            "title": "Жизнь с хипстершей и геймершей",
+            "branch_id": 81788,
+            "current_page": 0
+        },
+        {
+            "title": "Томо-тян – девушка!",
+            "branch_id": 176,
+            "current_page": 0
+        },
+        {
+            "title": "Юань Цзунь",
+            "branch_id": 2935,
+            "current_page": 0
+        },
+        {
+            "title": "Маленькие Монахини",
+            "branch_id": 74716,
+            "current_page": 0
+        },
+        {
+            "title": "Sequential Art",
+            "branch_id": 100735,
+            "current_page": 0
+        },
+        {
+            "title": "Техника Бога звёздных боевых искусств",
+            "branch_id": 235,
+            "current_page": 0
+        },
+        {
+            "title": "Чудесный котик Кю",
+            "branch_id": 104,
+            "current_page": 0
+        },
+        {
+            "title": "Царство",
+            "branch_id": 1047,
+            "current_page": 0
+        },
+        {
+            "title": "У меня каждую неделю новая профессия",
+            "branch_id": 36063,
+            "current_page": 0
+        },
+        {
+            "title": "КАРАКУЛИ САРЫ",
+            "branch_id": 82752,
+            "current_page": 0
+        },
+        {
+            "title": "Удивительный Человек-паук",
+            "branch_id": 54592,
+            "current_page": 0
+        },
+        {
+            "title": "Пощади Меня, Великий Господин",
+            "branch_id": 9931,
+            "current_page": 0
+        },
+        {
+            "title": "Lunarbaboon",
+            "branch_id": 10091,
+            "current_page": 0
+        },
+        {
+            "title": "Ван Пис— Цветное Издание",
+            "branch_id": 14007,
+            "current_page": 0
+        },
+        {
+            "title": "Как демон-император стал дворецким",
+            "branch_id": 3976,
+            "current_page": 0
+        },
+        {
+            "title": "Инициал Ди",
+            "branch_id": 2152,
+            "current_page": 0
+        },
+        {
+            "title": "Телепатическое наваждение",
+            "branch_id": 5515,
+            "current_page": 0
+        },
+        {
+            "title": "Блич - Цветная версия",
+            "branch_id": 91923,
+            "current_page": 0
+        },
+        {
+            "title": "Блич",
+            "branch_id": 271,
+            "current_page": 0
+        },
+        {
+            "title": "Наруто",
+            "branch_id": 249,
+            "current_page": 0
+        },
+        {
+            "title": "Гинтама",
+            "branch_id": 244,
+            "current_page": 0
+        },
+        {
+            "title": "Воинственный Бог Асура",
+            "branch_id": 15756,
+            "current_page": 0
+        }
+    ],
+    "current": {
+        "title": "Тёмная Сторона Коня",
+        "branch_id": 80024,
+        "current_page": 4
+    },
+    "finished": [
+        {
+            "title": "Пик боевых искусств",
+            "branch_id": 284,
+            "current_page": 129
+        },
+        {
+            "title": "Пинаты",
+            "branch_id": 80626,
+            "current_page": 110
+        }
+    ]
+}
