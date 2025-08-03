@@ -1,6 +1,16 @@
 {
     "in_queue": [
         {
+            "title": "Пинаты",
+            "branch_id": 80626,
+            "current_page": 1
+        },
+        {
+            "title": "Тёмная Сторона Коня",
+            "branch_id": 80024,
+            "current_page": 1
+        },
+        {
             "title": "Первый шаг",
             "branch_id": 1717,
             "current_page": 1
@@ -5387,20 +5397,9 @@
         }
     ],
     "current": {
-        "title": "Тёмная Сторона Коня",
-        "branch_id": 80024,
-        "current_page": 12
-    },
-    "finished": [
-        {
             "title": "Пик боевых искусств",
             "branch_id": 284,
-            "current_page": 129
+            "current_page": 1
         },
-        {
-            "title": "Пинаты",
-            "branch_id": 80626,
-            "current_page": 110
-        }
-    ]
+    "finished": []
 }
