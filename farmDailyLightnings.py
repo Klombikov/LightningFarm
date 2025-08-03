@@ -11,6 +11,6 @@ async def farmDailyLightning():
             result = await response.json()
             if "rewards" in result.keys():
                 lightning = 0
-                processRewards(result["rewards"], lightning)
+                lightning += processRewards(result["rewards"])
                 return lightning
     return 0

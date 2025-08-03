@@ -80,7 +80,8 @@ async def getLightningForReading(mangaList: MangaList, maxReadedChapters=10):
             iteration += 1
             response = await readChapter(chapter["id"])
             await asyncio.sleep(0.5)
-            processRewards(response, lightning)
+            if response and "rewards" in response.keys():
+                lightning += processRewards(response["rewards"])
             if iteration > maxReadedChapters:
                 flag = True
                 break

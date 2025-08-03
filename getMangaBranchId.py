@@ -122,4 +122,4 @@ def getMangaBranchId(saveFile=True, targetURLCount=30):
 
 
 if __name__ == "__main__":
-    getMangaBranchId()
+    getMangaBranchId(targetURLCount=1000)
