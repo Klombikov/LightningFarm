@@ -114,7 +114,7 @@ def getMangaBranchId(saveFile=True, targetURLCount=30):
     for i in range(len(urls)):
         new_item = getBranchIdAndTitle(urls[i][:len(urls[i])-4] + "chapters/")
         data["in_queue"].append(new_item)
-        print(f"Загружено {i + 1}/{len(urls)}: {new_item["title"]}" + " " * 100, end="\r")
+        print(f"Загружено {i + 1}/{len(urls)}: {new_item['title']}" + " " * 100, end="\r")
         if saveFile:
             jsonLoader.SaveFile(PATH, data)
     print("\n")

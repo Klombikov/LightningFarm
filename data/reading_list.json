@@ -1,31 +1,6 @@
 {
     "in_queue": [
         {
-            "title": "Пинаты",
-            "branch_id": 80626,
-            "current_page": 1
-        },
-        {
-            "title": "Тёмная Сторона Коня",
-            "branch_id": 80024,
-            "current_page": 1
-        },
-        {
-            "title": "Первый шаг",
-            "branch_id": 1717,
-            "current_page": 1
-        },
-        {
-            "title": "Становление богом",
-            "branch_id": 283,
-            "current_page": 1
-        },
-        {
-            "title": "Ван Пис",
-            "branch_id": 234,
-            "current_page": 1
-        },
-        {
             "title": "Маг на полную ставку",
             "branch_id": 8710,
             "current_page": 1
@@ -5397,9 +5372,35 @@
         }
     ],
     "current": {
+        "title": "Ван Пис",
+        "branch_id": 234,
+        "current_page": 5
+    },
+    "finished": [
+        {
             "title": "Пик боевых искусств",
             "branch_id": 284,
-            "current_page": 1
+            "current_page": 129
         },
-    "finished": []
+        {
+            "title": "Пинаты",
+            "branch_id": 80626,
+            "current_page": 110
+        },
+        {
+            "title": "Тёмная Сторона Коня",
+            "branch_id": 80024,
+            "current_page": 56
+        },
+        {
+            "title": "Первый шаг",
+            "branch_id": 1717,
+            "current_page": 51
+        },
+        {
+            "title": "Становление богом",
+            "branch_id": 283,
+            "current_page": 44
+        }
+    ]
 }

@@ -3,7 +3,7 @@ def processRewards(rewards):
     for item in rewards:
         if item['type'] == 'coins':
             sumLightning += int(item['value'])
-            print(f'Начислено {item['value']} молний')
+            print(f"Начислено {item['value']} молний")
         else:
             print('Ого, ничего себе, бог удачи соизволил тебе подарить карту')
     return sumLightning
