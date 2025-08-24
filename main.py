@@ -3,21 +3,66 @@ import asyncio
 
 from config import *
 from manga_list import MangaList
-from farmChapters import *
-from farmComments import *
-from farmDailyLightnings import *
+from farmLightnings import *
+from schemas import *
+
+
+def checkEnvFile():
+    """Функция, проверяющая наличие .env файла.
+    """
+    from dotenv import load_dotenv
+    load_dotenv()
+    if not os.getenv('AUTORIZATION'):
+        raise FileNotFoundError("Не найден файл \".env\".")
+    
+
+class CLIOutput():
+    """Класс, отвечающий за вывод информации
+
+    Данный класс нужен для того, чтобы в консоли выводилась информация о карточках и молниях
+    таким образом, чтобы молнии были всегда внизу.
+    """
+    def __init__(self):
+        """Инициализация класса"""
+        self.outputTextLength = 128
+        self.coins = 0
+        self._printCoins()
+
+
+    def _printCoins(self):
+        """Функция, которая выводит количество молний."""
+        text = f"Нафармлено молний: {self.coins}"
+        text += " " * (self.outputTextLength - len(text))
+        self.coinsTextOutput = text
+        print(self.coinsTextOutput, end='\r')
+
+
+    def print(self, rewardsResult: RewardsResult):
+        """Функция, которая выводит информацию о нафармленном.
+
+        Parameters:
+            rewardsResult (RewardsResult):
+                Словарь, в котором содержатся награды.
+        """
+        if rewardsResult["card"]:
+            text = f"Вам выпала карта {rewardsResult['card']['rank']} ранга"
+            text += " " * (self.outputTextLength - len(text))
+            print(text)
+            print(self.coinsTextOutput, end='\r')
+        if rewardsResult["coins"]:
+            self.coins += rewardsResult["coins"]
+            self._printCoins()
 
 
 def main():
     try:
+        checkEnvFile()
         manga = MangaList()
+        callback = CLIOutput()
+        lightningFarm = LightningFarm(manga, callback.print)
         async def farm():
-            result = await asyncio.gather(
-                farmComments(),
-                farmChapters(manga),
-                farmDailyLightning()
-            )
-            print(f'\nИтого нафармлено молний: {sum(result)}')
+            result = await lightningFarm.startFarm()
+            print(f'\nИтого нафармлено молний: {result}')
         asyncio.run(farm())
         manga.saveMangaList()
     except Exception as e:

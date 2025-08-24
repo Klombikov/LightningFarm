@@ -1,23 +1,13 @@
 {
     "in_queue": [
         {
-            "title": "Маг на полную ставку",
-            "branch_id": 8710,
-            "current_page": 1
-        },
-        {
             "title": "Перерождение бессмертного горожанина-культиватора",
             "branch_id": 2793,
-            "current_page": 1
+            "current_page": 14
         },
         {
             "title": "Жизнь с хипстершей и геймершей",
             "branch_id": 81788,
-            "current_page": 1
-        },
-        {
-            "title": "Томо-тян – девушка!",
-            "branch_id": 176,
             "current_page": 1
         },
         {
@@ -5372,9 +5362,9 @@
         }
     ],
     "current": {
-        "title": "Ван Пис",
-        "branch_id": 234,
-        "current_page": 5
+        "title": "Томо-тян – девушка!",
+        "branch_id": 176,
+        "current_page": 10
     },
     "finished": [
         {
@@ -5401,6 +5391,16 @@
             "title": "Становление богом",
             "branch_id": 283,
             "current_page": 44
+        },
+        {
+            "title": "Ван Пис",
+            "branch_id": 234,
+            "current_page": 39
+        },
+        {
+            "title": "Маг на полную ставку",
+            "branch_id": 8710,
+            "current_page": 36
         }
     ]
 }
