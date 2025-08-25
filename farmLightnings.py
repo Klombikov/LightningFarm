@@ -37,8 +37,6 @@ class LightningFarm():
                 postResponse = response
                 if postResponse.status == 200:
                     return await postResponse.json()
-                # Вставить обработку ошибки соединения
-                # Вставить обработку результата
                 else:
                     return []
                 
@@ -145,7 +143,7 @@ class LightningFarm():
             int:
                 Количество нафармленных молний
         """
-        for _ in range(maxReadCount):
+        for i in range(maxReadCount):
             if await self._getLightningForReading() == 0:
                 break
                 
@@ -160,14 +158,17 @@ class LightningFarm():
         """
         for i in range(maxCommentsCount):
             postResponse = None
+            postCode = None
             async with aiohttp.ClientSession() as session:
                 async with session.post(commentUrl, headers=headers, json=commentChapterPayload) as response:
-                    if response.status == 200:
+                    if response.status == 200 or response.status == 201:
                         postResponse = await response.json()
+                    # else:
+                    #     continue
                     # postResponse = await response.json()
                     # Сюда добавить отработку ошибки при потере соединения
             await asyncio.sleep(4)
-
+            
             async with aiohttp.ClientSession() as session:
                 async with session.delete(commentUrl + str(postResponse['id']), headers=headers) as response:
                     # Сюда добавить отработку ошибки при потере соединения
@@ -187,6 +188,8 @@ class LightningFarm():
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(currentUserUrl, headers=headers) as response:
+                if response.status != 200:
+                    return
                 result = await response.json()
                 if "rewards" in result.keys():
                     # Добавить обработку ошибок, когда реманга не отвечает

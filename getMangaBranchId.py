@@ -4,7 +4,7 @@ import re
 from jsonLoader import jsonLoader
 
 
-PATH="./data/reading_list.json"
+PATH="./data/new_reading_list.json"
 HREFS_PATH="./data/hrefs.txt"
 ERROR_HREFS_PATH="./data/error_chapters.txt"
 
@@ -18,19 +18,20 @@ def extractMangaURLs(targetURLCount):
         page.wait_for_selector('button:has-text("По популярности")')
         page.click('button:has-text("По популярности")')
 
-        page.wait_for_selector('span:has-text("По количеству эпизодов")')
-        page.click('span:has-text("По количеству эпизодов")')
+        page.wait_for_selector('span:has-text("По кол-ву эпизодов")')
+        page.click('span:has-text("По кол-ву эпизодов")')
         time.sleep(2)
 
-        page.wait_for_selector('a[data-sentry-element="CatalogList"]')
+        page.wait_for_selector('a[data-sentry-component="TitlesFeedContent"]')
 
         last_count = 0
         retries = 0
 
         while True:
             # Получаем количество найденных ссылок
-            links = page.query_selector_all('a[data-sentry-element="CatalogList"]')
+            links = page.query_selector_all('a[data-sentry-component="TitlesFeedContent"]')
             current_count = len(links)
+            print(f"{current_count}/{targetURLCount}", end='\r')
 
             if current_count >= targetURLCount:
                 break
@@ -46,11 +47,11 @@ def extractMangaURLs(targetURLCount):
 
             # Скроллим вниз
             page.evaluate("window.scrollBy(0, document.body.scrollHeight)")
-            time.sleep(1.5)
+            time.sleep(2)
 
         # Собираем все href
         hrefs = page.eval_on_selector_all(
-            'a[data-sentry-element="CatalogList"]',
+            'a[data-sentry-component="TitlesFeedContent"]',
             "els => els.map(e => e.href)"
         )
 
@@ -98,11 +99,15 @@ def getBranchIdAndTitle(chapters_url):
 
         browser.close()
 
-    return {
-            "title": title,
-            "branch_id": int(list(branch_ids)[0]),
-            "current_page": 1
-        }
+    try:
+        return {
+                "title": title,
+                "branch_id": int(list(branch_ids)[0]),
+                "current_page": 1
+            }
+    except Exception as e:
+        print(f"\n{e}\n")
+        return {}
 
 def getMangaBranchId(saveFile=True, targetURLCount=30):
     urls = extractMangaURLs(targetURLCount)
@@ -113,13 +118,14 @@ def getMangaBranchId(saveFile=True, targetURLCount=30):
     }
     for i in range(len(urls)):
         new_item = getBranchIdAndTitle(urls[i][:len(urls[i])-4] + "chapters/")
-        data["in_queue"].append(new_item)
-        print(f"Загружено {i + 1}/{len(urls)}: {new_item['title']}" + " " * 100, end="\r")
-        if saveFile:
-            jsonLoader.SaveFile(PATH, data)
+        if new_item:
+            data["in_queue"].append(new_item)
+            print(f"Загружено {i + 1}/{len(urls)}: {new_item['title']}" + " " * 50, end="\r")
+            if saveFile:
+                jsonLoader.SaveFile(PATH, data)
     print("\n")
     return data
 
 
 if __name__ == "__main__":
-    getMangaBranchId(targetURLCount=1000)
+    getMangaBranchId(targetURLCount=2000)

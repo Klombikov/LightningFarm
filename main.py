@@ -8,8 +8,7 @@ from schemas import *
 
 
 def checkEnvFile():
-    """Функция, проверяющая наличие .env файла.
-    """
+    """Функция, проверяющая наличие .env файла."""
     from dotenv import load_dotenv
     load_dotenv()
     if not os.getenv('AUTORIZATION'):
@@ -24,7 +23,7 @@ class CLIOutput():
     """
     def __init__(self):
         """Инициализация класса"""
-        self.outputTextLength = 128
+        self._outputTextLength = 128
         self.coins = 0
         self._printCoins()
 
@@ -32,12 +31,17 @@ class CLIOutput():
     def _printCoins(self):
         """Функция, которая выводит количество молний."""
         text = f"Нафармлено молний: {self.coins}"
-        text += " " * (self.outputTextLength - len(text))
+        text += " " * (self._outputTextLength - len(text))
         self.coinsTextOutput = text
         print(self.coinsTextOutput, end='\r')
 
 
-    def print(self, rewardsResult: RewardsResult):
+    def sendMessage(self, text):
+        print(text)
+        print()
+
+
+    def sendRewards(self, rewardsResult: RewardsResult):
         """Функция, которая выводит информацию о нафармленном.
 
         Parameters:
@@ -46,7 +50,7 @@ class CLIOutput():
         """
         if rewardsResult["card"]:
             text = f"Вам выпала карта {rewardsResult['card']['rank']} ранга"
-            text += " " * (self.outputTextLength - len(text))
+            text += " " * (self._outputTextLength - len(text))
             print(text)
             print(self.coinsTextOutput, end='\r')
         if rewardsResult["coins"]:
@@ -54,17 +58,19 @@ class CLIOutput():
             self._printCoins()
 
 
+    def end(self):
+        print(self.coinsTextOutput)
+
+
 def main():
     try:
         checkEnvFile()
         manga = MangaList()
         callback = CLIOutput()
-        lightningFarm = LightningFarm(manga, callback.print)
-        async def farm():
-            result = await lightningFarm.startFarm()
-            print(f'\nИтого нафармлено молний: {result}')
-        asyncio.run(farm())
+        lightningFarm = LightningFarm(manga, callback.sendRewards)
+        asyncio.run(lightningFarm.startFarm())
         manga.saveMangaList()
+        callback.end()
     except Exception as e:
         print('Что-то пошло не так, программа аварийно закрылась. Ошибка:\n', e)
 
